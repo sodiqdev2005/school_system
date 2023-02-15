@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Add Blog Post</h1>
+<br>
+{% if user.is_authenticated %}
+    <form class="container" method="POST">
+        {% csrf_token %}
+        {{ form.media }}
+        {{ form.as_p }}
+        <button>Post</button>
+    </form>
+{% else %}
+<p class="lead">You should register now than you can create a new post!</p>
+{% endif %}
+
+{% endblock content %}

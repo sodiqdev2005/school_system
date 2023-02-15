@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+<div class="container">
+{% block body %}
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Yuborish">
+    </form>
+{% endblock %}
+</div>
+{% endblock content %}

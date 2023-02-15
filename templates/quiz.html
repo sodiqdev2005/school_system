@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div style="border-radius: 30px;" class="container-fluid shadow py-5 mt-5">
+    <h2>Testlar ro'yxati</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+        {% for quiz in quizs %}
+            <tbody>
+                <tr>
+                  <td>{{ quiz.title }}</td>
+                    <td><a target="_blank" href="{% url 'result_detail' quiz.id %}">Test natijalari</a></td>
+                    {% if quiz.tugatish %}
+                        <td><button onclick="alert('Kechirasiz ushbu test admin tomonidan to\'xtatilgan')" class="btn btn-outline-danger">Tugatildi ...</button></td>
+                    {% else %}
+                        <td><a href="{% url 'quistion' quiz.id %}" class="btn btn-outline-primary">Qatnashish</a></td>
+                    {% endif %}
+                </tr>
+            </tbody>
+        {% endfor %}
+    </table>
+</div>
+{% endblock content %}

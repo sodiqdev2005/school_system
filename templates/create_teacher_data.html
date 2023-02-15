@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h3>Yangi o'qituvchi ma'lumotlarini qo'shish</h3>
+{% if user.is_authenticated %}
+    {% if user.is_staff %}
+        <form class="container mt-5" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Saqlash" class="shadow btn btn-primary">
+        </form>
+    {% else %}
+        <div class="mt-5">
+            <div class="alert alert-danger mt-5 container" role="alert">
+              Sizga mumkin emas !
+            </div>
+        </div>
+    {% endif %}
+{% else %}
+<div class="mt-5">
+    <div class="alert alert-warning mt-5 container" role="alert">
+      Iltimos oldin ro'yxatdan o'ting !
+    </div>
+</div>
+{% endif %}
+
+{% endblock content %}

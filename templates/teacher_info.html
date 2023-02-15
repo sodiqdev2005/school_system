@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      {% for teacher_info in object_list %}
+        <div class="col mt-5">
+          <div class="card shadow">
+            <img height="240"; src="{{ teacher_info.teacher_photo.url }}" class="card-img-top" alt="Kechirasiz sizning brauzeringizda muammo bor yoki ushbu rasm admin tomonidan o'chirib yoborilgan">
+            <div class="card-body">
+              <h5 class="card-title">{{ teacher_info.teacherfio }}</h5>
+              <p class="card-text">{{ teacher_info.kasbi }}</p>
+              <p class="card-text">{{ teacher_info.teacher_info|safe }}</p>
+              {% if user.is_authenticated %}
+                {% if user.is_staff %}
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <a href="{% url 'edit_teacher_info' teacher_info.pk %}" class="btn btn-sm btn-outline-warning shadow">Tahrirlash</a>
+                      <a href="{% url 'remove_teacher_info' teacher_info.pk %}" class="btn btn-sm btn-outline-danger shadow">O'chirish</a>
+                    </div>
+                  </div>
+                {% endif %}
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+</div>
+{% endblock content %}

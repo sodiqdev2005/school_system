@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br>
+<form class="container mt-5" method="POST">
+    <h2>Ro'yxatdan o'tish</h2>
+    {% csrf_token %}
+    <div class="mb-3">
+        <label class="form-label">Foydalanuvchi nomi</label>
+        <input name="username" type="text" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Ism</label>
+        <input name="first_name" type="text" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Familiya</label>
+        <input name="last_name" type="text" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Parol</label>
+        <input name="password1" type="password" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Parolni qaytaring</label>
+        <input name="password2" type="password" class="form-control">
+    </div>
+    <input type="submit" class="btn btn-outline-success" value="Ro'yxatdab o'tish">
+</form>
+
+{% endblock content %}
